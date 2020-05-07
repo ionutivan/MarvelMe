@@ -14,6 +14,8 @@
 		C6ABADBA24640D9000CA8AD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6ABADB924640D9000CA8AD0 /* Assets.xcassets */; };
 		C6ABADBD24640D9000CA8AD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6ABADBB24640D9000CA8AD0 /* LaunchScreen.storyboard */; };
 		C6ABADC824640D9000CA8AD0 /* MarvelMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ABADC724640D9000CA8AD0 /* MarvelMeTests.swift */; };
+		C6ABADD7246439F100CA8AD0 /* MarvelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ABADD6246439F000CA8AD0 /* MarvelService.swift */; };
+		C6ABADDA24644E6D00CA8AD0 /* Superhero.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ABADD924644E6D00CA8AD0 /* Superhero.swift */; };
 		CD7AE896D0ED57973B1800E6 /* Pods_MarvelMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F127C58E9ABE273A6394DEA6 /* Pods_MarvelMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,6 +43,8 @@
 		C6ABADC324640D9000CA8AD0 /* MarvelMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6ABADC724640D9000CA8AD0 /* MarvelMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelMeTests.swift; sourceTree = "<group>"; };
 		C6ABADC924640D9000CA8AD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C6ABADD6246439F000CA8AD0 /* MarvelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelService.swift; sourceTree = "<group>"; };
+		C6ABADD924644E6D00CA8AD0 /* Superhero.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Superhero.swift; sourceTree = "<group>"; };
 		D0857244A0DCBF85F65FAC99 /* Pods_MarvelMeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelMeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F127C58E9ABE273A6394DEA6 /* Pods_MarvelMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6E22DAC504C4541CFC5F18F /* Pods-MarvelMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelMe.release.xcconfig"; path = "Target Support Files/Pods-MarvelMe/Pods-MarvelMe.release.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +113,8 @@
 		C6ABADAF24640D8B00CA8AD0 /* MarvelMe */ = {
 			isa = PBXGroup;
 			children = (
+				C6ABADD824644E5E00CA8AD0 /* Model */,
+				C6ABADD5246439CC00CA8AD0 /* Service */,
 				C6ABADB024640D8B00CA8AD0 /* AppDelegate.swift */,
 				C6ABADB224640D8B00CA8AD0 /* SceneDelegate.swift */,
 				C6ABADB424640D8B00CA8AD0 /* ViewController.swift */,
@@ -126,6 +132,22 @@
 				C6ABADC924640D9000CA8AD0 /* Info.plist */,
 			);
 			path = MarvelMeTests;
+			sourceTree = "<group>";
+		};
+		C6ABADD5246439CC00CA8AD0 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				C6ABADD6246439F000CA8AD0 /* MarvelService.swift */,
+			);
+			path = Service;
+			sourceTree = "<group>";
+		};
+		C6ABADD824644E5E00CA8AD0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C6ABADD924644E6D00CA8AD0 /* Superhero.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +337,8 @@
 			files = (
 				C6ABADB524640D8B00CA8AD0 /* ViewController.swift in Sources */,
 				C6ABADB124640D8B00CA8AD0 /* AppDelegate.swift in Sources */,
+				C6ABADDA24644E6D00CA8AD0 /* Superhero.swift in Sources */,
+				C6ABADD7246439F100CA8AD0 /* MarvelService.swift in Sources */,
 				C6ABADB324640D8B00CA8AD0 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
