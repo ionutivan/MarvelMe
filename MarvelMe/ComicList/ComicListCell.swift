@@ -1,5 +1,5 @@
 //
-//  SuperheroListCell.swift
+//  ComicListCell.swift
 //  MarvelMe
 //
 //  Created by Ionut Ivan on 11/05/2020.
@@ -9,15 +9,15 @@
 import UIKit
 import Kingfisher
 
-class SuperheroListCell: UITableViewCell {
+class ComicListCell: UITableViewCell {
   
-  var viewModel: SuperheroCellViewModel? {
+  var viewModel: ComicCellViewModel? {
     didSet {
       bindViewModel()
     }
   }
     
-  var superheroNameLabel: UILabel = {
+  var comicNameLabel: UILabel = {
     let pilotNameLabel = UILabel()
     pilotNameLabel.textColor = .black
     pilotNameLabel.numberOfLines = 0
@@ -26,7 +26,7 @@ class SuperheroListCell: UITableViewCell {
     return pilotNameLabel
   }()
   
-  var superheroImageView: UIImageView = {
+  var comicImageView: UIImageView = {
     let pilotImageView = UIImageView(frame: .zero)
     pilotImageView.contentMode = .scaleAspectFill
     pilotImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -35,7 +35,7 @@ class SuperheroListCell: UITableViewCell {
   }()
   
   lazy var stackView: UIStackView = {
-    let stackView = UIStackView(arrangedSubviews: [self.superheroImageView, self.superheroNameLabel])
+    let stackView = UIStackView(arrangedSubviews: [self.comicImageView, self.comicNameLabel])
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.axis = .horizontal
     stackView.alignment = .center
@@ -67,19 +67,19 @@ class SuperheroListCell: UITableViewCell {
     ])
     
     NSLayoutConstraint.activate([
-      superheroImageView.widthAnchor.constraint(equalToConstant: 56),
-      superheroImageView.heightAnchor.constraint(equalToConstant: 56),
+      comicImageView.widthAnchor.constraint(equalToConstant: 56),
+      comicImageView.heightAnchor.constraint(equalToConstant: 56),
       ])
   }
   
   func bindViewModel() {
     if let viewModel = viewModel {
       
-      superheroNameLabel.text = viewModel.name
+      comicNameLabel.text = viewModel.name
 
       if let urlString = viewModel.imageURL,
         let url = URL(string: urlString) {
-        superheroImageView.kf.setImage(with: url)
+        comicImageView.kf.setImage(with: url)
       }
     }
     

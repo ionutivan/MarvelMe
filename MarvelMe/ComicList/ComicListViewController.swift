@@ -1,5 +1,5 @@
 //
-//  SuperheroListViewController.swift
+//  ComicListViewController.swift
 //  MarvelMe
 //
 //  Created by Ionut Ivan on 11/05/2020.
@@ -13,11 +13,11 @@ import RxSwift
 import RxCocoa
 import Kingfisher
 
-class SuperheroListViewController: UIViewController {
+class ComicListViewController: UIViewController {
     
   lazy var tableView: UITableView! = {
     let tableView = UITableView()
-    tableView.register(SuperheroListCell.self, forCellReuseIdentifier: cellIdentifier)
+    tableView.register(ComicListCell.self, forCellReuseIdentifier: cellIdentifier)
     tableView.rowHeight = UITableView.automaticDimension
     tableView.estimatedRowHeight = 44
     tableView.backgroundView = UIImageView(image: UIImage(named: "Background"))
@@ -29,12 +29,12 @@ class SuperheroListViewController: UIViewController {
   }()
 
     let refreshControl = UIRefreshControl()
-    let cellIdentifier = "SuperheroListCell"
+    let cellIdentifier = "ComicListCell"
     
-    private var viewModel: SuperheroListViewModel!
+    private var viewModel: ComicListViewModel!
     private let disposeBag = DisposeBag()
     let api = MarvelService()
-    convenience init(viewModel: SuperheroListViewModel) {
+    convenience init(viewModel: ComicListViewModel) {
         self.init()
         self.viewModel = viewModel
     }
@@ -47,7 +47,7 @@ class SuperheroListViewController: UIViewController {
         
       bindViews()
       
-      viewModel.getSuperheroes()
+      viewModel.getComics()
     }
   
   func constraintInit() {
@@ -61,9 +61,9 @@ class SuperheroListViewController: UIViewController {
     
     func bindViews() {
         
-      viewModel.output.superheroes
-        .drive(self.tableView.rx.items(cellIdentifier: cellIdentifier, cellType: SuperheroListCell.self)) { (row, item, cell) in
-          let viewModel = SuperheroCellViewModel(item: item)
+      viewModel.output.comics
+        .drive(self.tableView.rx.items(cellIdentifier: cellIdentifier, cellType: ComicListCell.self)) { (row, item, cell) in
+          let viewModel = ComicCellViewModel(item: item)
           cell.viewModel = viewModel
           }
           .disposed(by: disposeBag)
@@ -76,10 +76,10 @@ class SuperheroListViewController: UIViewController {
             })
             .disposed(by: disposeBag)
             
-        tableView.rx.modelSelected(Superhero.self)
+        tableView.rx.modelSelected(Comic.self)
             .subscribe(onNext: { [weak self] model in
                 
-              self?.viewModel.output.selectSuperhero.accept(model)
+              self?.viewModel.output.selectComic.accept(model)
               if let selectedIndexPath = self?.tableView.indexPathForSelectedRow {
                 self?.tableView.deselectRow(at: selectedIndexPath, animated: true)
               }

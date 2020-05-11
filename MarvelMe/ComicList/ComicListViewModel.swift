@@ -1,5 +1,5 @@
 //
-//  SuperheroListViewModel.swift
+//  ComicListViewModel.swift
 //  MarvelMe
 //
 //  Created by Ionut Ivan on 11/05/2020.
@@ -11,7 +11,7 @@ import RxSwift
 import RxCocoa
 
 
-final class SuperheroListViewModel {
+final class ComicListViewModel {
 
   private let api: MarvelService
    private let bag = DisposeBag()
@@ -23,9 +23,9 @@ final class SuperheroListViewModel {
    }
        
    struct Output {
-     let superheroes: Driver<[Superhero]>
+     let comics: Driver<[Comic]>
      let errorMessage: Driver<String>
-     let selectSuperhero: PublishRelay<Superhero?>
+     let selectComic: PublishRelay<Comic?>
    }
          
      
@@ -34,20 +34,20 @@ final class SuperheroListViewModel {
        self.api = api
        let reloadRelay = PublishRelay<Bool>()
        let errorRelay = PublishRelay<String>()
-       let selectSuperhero = PublishRelay<Superhero?>()
-       let superheroes = reloadRelay
-         .flatMapLatest({ _ in api.getSuperheroes() })
-         .asDriver{ (error) -> Driver<[Superhero]> in
+       let selectComic = PublishRelay<Comic?>()
+       let comics = reloadRelay
+         .flatMapLatest({ _ in api.getComics() })
+         .asDriver{ (error) -> Driver<[Comic]> in
            errorRelay.accept((error as? ServiceError)?.localizedDescription ?? error.localizedDescription)
            return Driver.just([])
        }
        self.input = Input(reload: reloadRelay)
-       self.output = Output(superheroes: superheroes,
+       self.output = Output(comics: comics,
                             errorMessage: errorRelay.asDriver(onErrorJustReturn: "An error happened"),
-                            selectSuperhero: selectSuperhero)
+                            selectComic: selectComic)
      }
   
-  func getSuperheroes() {
+  func getComics() {
     input.reload.accept(true)
   }
 }

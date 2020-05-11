@@ -1,5 +1,5 @@
 //
-//  SuperheroCellViewModel.swift
+//  ComicCellViewModel.swift
 //  MarvelMe
 //
 //  Created by Ionut Ivan on 11/05/2020.
@@ -8,11 +8,11 @@
 
 import Foundation
 
-struct SuperheroCellViewModel {
+struct ComicCellViewModel {
   let name: String?
   let imageURL: String?
   
-  init(item: Superhero) {
+  init(item: Comic) {
     self.name = item.title
     if let path = item.thumbnailPath, let imageExtension = item.thumbnailExtension {
       self.imageURL = path + "." + imageExtension

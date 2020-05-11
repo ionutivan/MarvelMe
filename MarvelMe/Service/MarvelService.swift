@@ -18,15 +18,15 @@ let privateKey = "9b085aedb6bc43560a546a594ae23ac6fd377212"
 
 enum ServiceError: Error {
   case requestFailed
-  case superheroParsingFailed
+  case comicsParsingFailed
   case noResults
   
   var localizedDescription: String {
     switch self {
     case .requestFailed:
       return "requestFailed"
-    case .superheroParsingFailed:
-      return "superheroParsingFailed"
+    case .comicsParsingFailed:
+      return "comicsParsingFailed"
     case .noResults:
       return "noResults"
     }
@@ -35,20 +35,20 @@ enum ServiceError: Error {
 
 final class MarvelService {
   
-  func getSuperheroes(offset: Int = 0, limit: Int = 20) -> Observable<[Superhero]> {
-    let superheroesURL = baseURL + "/comics"
-    return buildRequest(url: URL(string: superheroesURL)!, offset: offset, limit: limit)
+  func getComics(offset: Int = 0, limit: Int = 20) -> Observable<[Comic]> {
+    let comicsURL = baseURL + "/comics"
+    return buildRequest(url: URL(string: comicsURL)!, offset: offset, limit: limit)
       .map { data in
         let decoder = JSONDecoder()
         do {
           let mainData = try decoder.decode(MainData.self, from: data)
-          if let superheroes = mainData.superheroes {
-            return superheroes
+          if let comics = mainData.comics {
+            return comics
           } else {
             throw ServiceError.noResults
           }
         } catch {
-          throw ServiceError.superheroParsingFailed
+          throw ServiceError.comicsParsingFailed
         }
     }
   }
