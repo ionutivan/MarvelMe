@@ -7,12 +7,27 @@
 //
 
 import UIKit
+import RxSwift
+import RxRelay
 
 class ViewController: UIViewController {
+  
+  let service = MarvelService()
+  let disposeBag = DisposeBag()
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = .red
+    
     // Do any additional setup after loading the view.
+    
+    service.getSuperheroes()
+      .observeOn(MainScheduler.instance)
+    .subscribe(onNext: { _ in
+      print("onNext")
+    }, onError: { e in print("onError \(e.localizedDescription)")}, onCompleted: { print("onCompleted")} , onDisposed: {print("onDisposed")})
+      .disposed(by: disposeBag)
+      
   }
 
 

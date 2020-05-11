@@ -6,6 +6,7 @@ target 'MarvelMe' do
   pod 'RxSwift', '~> 5'
   pod 'RxCocoa', '~> 5'
   pod 'Kingfisher', '~> 5.11.0'
+  pod 'CryptoSwift', '~> 1.3'
 
   target 'MarvelMeTests' do
     inherit! :search_paths
