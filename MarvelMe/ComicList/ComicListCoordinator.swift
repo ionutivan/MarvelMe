@@ -24,9 +24,15 @@ extension ComicListCoordinator: CoordinatorInterface {
       viewController.title = "LAST COMICS"
       navigationController?.pushViewController(viewController, animated: true)
       
-    viewModel.output.selectComic.asDriver(onErrorJustReturn: nil).drive(onNext: { [weak self] hero in
-      // TODO: start detail coordinator
-    }).disposed(by: disposeBag)
+    viewModel.output.selectComic
+      .filter{ $0 != nil }
+      .asDriver(onErrorJustReturn: nil)
+      .drive(onNext: { [weak self] comic in
+        let coordinator = ComicDetailCoordinator(navigationController: self?.navigationController, comic: comic!)
+        coordinator.start()
+        self?.childCoordinators.append(coordinator)
+    })
+      .disposed(by: disposeBag)
       
   }
 }
