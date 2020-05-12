@@ -11,6 +11,10 @@ import Kingfisher
 
 class ComicListCell: UITableViewCell {
   
+  private var compactConstraints: [NSLayoutConstraint] = []
+  private var regularConstraints: [NSLayoutConstraint] = []
+  private var sharedConstraints: [NSLayoutConstraint] = []
+  
   var viewModel: ComicCellViewModel? {
     didSet {
       bindViewModel()
@@ -59,17 +63,49 @@ class ComicListCell: UITableViewCell {
   }
   
   func setupLayout() {
-    NSLayoutConstraint.activate([
+    sharedConstraints.append(contentsOf: [
       stackView.topAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.topAnchor, constant: 16),
       stackView.leadingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.leadingAnchor, constant: 16),
       stackView.trailingAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.trailingAnchor, constant: -16),
       stackView.bottomAnchor.constraint(equalTo: contentView.safeAreaLayoutGuide.bottomAnchor, constant: -16)
     ])
     
-    NSLayoutConstraint.activate([
+    compactConstraints.append(contentsOf: [
       comicImageView.widthAnchor.constraint(equalToConstant: 56),
-      comicImageView.heightAnchor.constraint(equalToConstant: 56),
-      ])
+      comicImageView.heightAnchor.constraint(equalToConstant: 56)
+    ])
+    
+    regularConstraints.append(contentsOf: [
+      comicImageView.widthAnchor.constraint(equalToConstant: 75),
+      comicImageView.heightAnchor.constraint(equalToConstant: 75)
+    ])
+    
+    NSLayoutConstraint.activate(sharedConstraints)
+    layoutTrait(traitCollection: UIScreen.main.traitCollection)
+  }
+  
+  func layoutTrait(traitCollection:UITraitCollection) {
+    if (!sharedConstraints[0].isActive) {
+      NSLayoutConstraint.activate(sharedConstraints)
+    }
+    
+    if traitCollection.horizontalSizeClass == .compact && traitCollection.verticalSizeClass == .regular {
+      if regularConstraints.count > 0 && regularConstraints[0].isActive {
+        NSLayoutConstraint.deactivate(regularConstraints)
+      }
+        NSLayoutConstraint.activate(compactConstraints)
+    } else {
+        if compactConstraints.count > 0 && compactConstraints[0].isActive {
+            NSLayoutConstraint.deactivate(compactConstraints)
+        }
+        NSLayoutConstraint.activate(regularConstraints)
+    }
+  }
+  
+  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    super.traitCollectionDidChange(previousTraitCollection)
+    
+    layoutTrait(traitCollection: traitCollection)
   }
   
   func bindViewModel() {
