@@ -20,6 +20,7 @@ enum ServiceError: Error {
   case requestFailed
   case comicsParsingFailed
   case noResults
+  case comicDetailParsingFailed
   
   var localizedDescription: String {
     switch self {
@@ -29,11 +30,27 @@ enum ServiceError: Error {
       return "comicsParsingFailed"
     case .noResults:
       return "noResults"
+    case .comicDetailParsingFailed:
+      return "comicDetailParsingFailed"
     }
   }
 }
 
 final class MarvelService {
+  
+  func getComicDetail(id: String) -> Observable<ComicDetail> {
+    let comicDetailURL = baseURL + "/comics" + "/\(id)"
+    return buildRequest(url: URL(string: comicDetailURL)!, offset: 0, limit: 1)
+      .map { data in
+        let decoder = JSONDecoder()
+        do {
+          let mainData = try decoder.decode(ComicDetail.self, from: data)
+          return mainData
+        } catch {
+          throw ServiceError.comicDetailParsingFailed
+        }
+    }
+  }
   
   func getComics(offset: Int = 0, limit: Int = 20) -> Observable<[Comic]> {
     let comicsURL = baseURL + "/comics"
@@ -53,7 +70,7 @@ final class MarvelService {
     }
   }
   
-  private func buildRequest(url: URL, offset: Int, limit: Int) -> Observable<Data> {
+  private func buildRequest(url: URL, offset: Int = 0, limit: Int = 1) -> Observable<Data> {
     let request: Observable<URLRequest> = Observable.create() { observer in
       let ts = Int(Date().timeIntervalSince1970)
       let hash = "\(ts)\(privateKey)\(publicKey)".md5()

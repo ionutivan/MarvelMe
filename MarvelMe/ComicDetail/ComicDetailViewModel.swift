@@ -12,24 +12,8 @@ import RxCocoa
 
 struct ComicDetailViewModel {
     
-    private static var isoDateFormatter: ISO8601DateFormatter = {
-        let formatter = ISO8601DateFormatter()
-        return formatter
-    }()
-    
-    private static var dateFormatter: DateFormatter = {
-        let formatter = DateFormatter()
-        formatter.dateStyle = .short
-        return formatter
-    }()
-    
-    private static var timeFormatter: DateComponentsFormatter = {
-        let formatter = DateComponentsFormatter()
-        formatter.unitsStyle = .short
-        formatter.allowedUnits = [.hour, .minute, .second]
-        return formatter
-    }()
-    
+  private let api: MarvelService
+  
     let input: Input
     let output: Output
     
@@ -40,10 +24,11 @@ struct ComicDetailViewModel {
     struct Output {
       let name: Driver<String?>
       let imageStringURL: Driver<String?>
+      let description: Driver<String?>
     }
     
-    init() {
-
+    init(api: MarvelService) {
+      self.api = api
       let selectComic = PublishRelay<Comic>()
         
       let sharedComic = selectComic.share()
@@ -59,8 +44,15 @@ struct ComicDetailViewModel {
         .map { $0.0 + "." + $0.1 }
         .asDriver(onErrorJustReturn: nil)
       
+      let description = sharedComic
+        .flatMap { comic in
+          api.getComicDetail(id: String(comic.id!))
+        }
+      .map{ $0.description }
+      .asDriver(onErrorJustReturn: "Some marvelous description")
+      
       self.input = Input(comic: selectComic)
-      self.output = Output(name: name, imageStringURL: imageStringURL)
+      self.output = Output(name: name, imageStringURL: imageStringURL, description: description)
 
     }
 }

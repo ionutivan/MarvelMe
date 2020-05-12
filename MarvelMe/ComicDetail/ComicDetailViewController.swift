@@ -43,6 +43,14 @@ final class ComicDetailViewController: UIViewController {
     return stackView
   }()
   
+  var descriptionLabel: UILabel = {
+    let descriptionLabel = UILabel()
+    descriptionLabel.numberOfLines = 0
+    descriptionLabel.textColor = .white
+    descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
+    return descriptionLabel
+  }()
+  
   convenience init(viewModel: ComicDetailViewModel, comic: Comic) {
       self.init()
       self.comic = comic
@@ -54,6 +62,7 @@ final class ComicDetailViewController: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .black
     view.addSubview(stackView)
+    view.addSubview(descriptionLabel)
     
     constraintInit()
     
@@ -67,7 +76,11 @@ final class ComicDetailViewController: UIViewController {
       
       stackView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
       stackView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-      stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16)
+      stackView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+      stackView.bottomAnchor.constraint(equalTo: descriptionLabel.topAnchor, constant: -16),
+      
+      descriptionLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+      descriptionLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
     ])
   }
   
@@ -89,6 +102,10 @@ final class ComicDetailViewController: UIViewController {
         }
       })
     .disposed(by: disposeBag)
+    
+    viewModel.output.description
+      .drive(descriptionLabel.rx.text)
+      .disposed(by: disposeBag)
     
     viewModel.input.comic.accept(comic)
   }

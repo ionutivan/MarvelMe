@@ -18,7 +18,8 @@ final class ComicDetailCoordinator: Coordinator {
   }
     
     func start() {
-        let viewModel = ComicDetailViewModel()
+      let api = MarvelService()
+        let viewModel = ComicDetailViewModel(api: api)
         let viewController = ComicDetailViewController(viewModel: viewModel, comic: comic)
         navigationController?.pushViewController(viewController, animated: true)
     }
