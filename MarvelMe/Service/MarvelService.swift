@@ -36,7 +36,12 @@ enum ServiceError: Error {
   }
 }
 
-final class MarvelService {
+protocol MarvelServiceProtocol {
+  func getComics(offset: Int, limit: Int) -> Observable<[Comic]>
+  func getComicDetail(id: String) -> Observable<ComicDetail>
+}
+
+final class MarvelService: MarvelServiceProtocol {
   
   func getComicDetail(id: String) -> Observable<ComicDetail> {
     let comicDetailURL = baseURL + "/comics" + "/\(id)"
