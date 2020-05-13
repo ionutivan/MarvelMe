@@ -21,8 +21,10 @@ enum ServiceError: Error {
   case comicsParsingFailed
   case noResults
   case comicDetailParsingFailed
-  
-  var localizedDescription: String {
+}
+
+extension ServiceError: LocalizedError {
+  var errorDescription : String? {
     switch self {
     case .requestFailed:
       return "requestFailed"

@@ -8,31 +8,33 @@
 
 import Foundation
 
-struct Comic: Decodable {
+struct Comic {
   let title: String?
   let thumbnailPath: String?
   let thumbnailExtension: String?
   let id: Int?
-  
-  enum CodingKeys: String, CodingKey {
-    case title
-    case thumbnail
-    case id
-  }
-  
-  enum ThumbnailKeys: String, CodingKey {
-    case path
-    case imageExtension = "extension"
-  }
+}
 
-  init(from decoder: Decoder) throws {
-    let values = try decoder.container(keyedBy: CodingKeys.self)
-    title = try values.decode(String.self, forKey: .title)
-    id = try values.decode(Int.self, forKey: .id)
-    let thumbnailInfo = try values.nestedContainer(keyedBy: ThumbnailKeys.self, forKey: .thumbnail)
-    thumbnailPath = try thumbnailInfo.decode(String.self, forKey: .path)
-    thumbnailExtension = try thumbnailInfo.decode(String.self, forKey: .imageExtension)
-  }
+extension Comic: Decodable, Equatable {
+  enum CodingKeys: String, CodingKey {
+     case title
+     case thumbnail
+     case id
+   }
+   
+   enum ThumbnailKeys: String, CodingKey {
+     case path
+     case imageExtension = "extension"
+   }
+
+   init(from decoder: Decoder) throws {
+     let values = try decoder.container(keyedBy: CodingKeys.self)
+     title = try values.decode(String.self, forKey: .title)
+     id = try values.decode(Int.self, forKey: .id)
+     let thumbnailInfo = try values.nestedContainer(keyedBy: ThumbnailKeys.self, forKey: .thumbnail)
+     thumbnailPath = try thumbnailInfo.decode(String.self, forKey: .path)
+     thumbnailExtension = try thumbnailInfo.decode(String.self, forKey: .imageExtension)
+   }
 }
 
 struct MainData: Decodable {

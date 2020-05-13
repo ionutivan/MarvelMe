@@ -16,7 +16,7 @@
 		C6ABADB324640D8B00CA8AD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ABADB224640D8B00CA8AD0 /* SceneDelegate.swift */; };
 		C6ABADBA24640D9000CA8AD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6ABADB924640D9000CA8AD0 /* Assets.xcassets */; };
 		C6ABADBD24640D9000CA8AD0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C6ABADBB24640D9000CA8AD0 /* LaunchScreen.storyboard */; };
-		C6ABADC824640D9000CA8AD0 /* MarvelMeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ABADC724640D9000CA8AD0 /* MarvelMeTests.swift */; };
+		C6ABADC824640D9000CA8AD0 /* ComicListViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ABADC724640D9000CA8AD0 /* ComicListViewModelTests.swift */; };
 		C6ABADD7246439F100CA8AD0 /* MarvelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ABADD6246439F000CA8AD0 /* MarvelService.swift */; };
 		C6ABADDA24644E6D00CA8AD0 /* Comic.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ABADD924644E6D00CA8AD0 /* Comic.swift */; };
 		C6ABADDE2469602900CA8AD0 /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ABADDD2469602900CA8AD0 /* AppCoordinator.swift */; };
@@ -54,7 +54,7 @@
 		C6ABADBC24640D9000CA8AD0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C6ABADBE24640D9000CA8AD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6ABADC324640D9000CA8AD0 /* MarvelMeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MarvelMeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		C6ABADC724640D9000CA8AD0 /* MarvelMeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelMeTests.swift; sourceTree = "<group>"; };
+		C6ABADC724640D9000CA8AD0 /* ComicListViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListViewModelTests.swift; sourceTree = "<group>"; };
 		C6ABADC924640D9000CA8AD0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C6ABADD6246439F000CA8AD0 /* MarvelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarvelService.swift; sourceTree = "<group>"; };
 		C6ABADD924644E6D00CA8AD0 /* Comic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Comic.swift; sourceTree = "<group>"; };
@@ -161,7 +161,7 @@
 		C6ABADC624640D9000CA8AD0 /* MarvelMeTests */ = {
 			isa = PBXGroup;
 			children = (
-				C6ABADC724640D9000CA8AD0 /* MarvelMeTests.swift */,
+				C6ABADC724640D9000CA8AD0 /* ComicListViewModelTests.swift */,
 				C6ABADC924640D9000CA8AD0 /* Info.plist */,
 			);
 			path = MarvelMeTests;
@@ -403,7 +403,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C6ABADC824640D9000CA8AD0 /* MarvelMeTests.swift in Sources */,
+				C6ABADC824640D9000CA8AD0 /* ComicListViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
