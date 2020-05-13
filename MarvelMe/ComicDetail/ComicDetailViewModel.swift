@@ -37,6 +37,7 @@ struct ComicDetailViewModel {
         .asDriver(onErrorJustReturn: nil)
       
       let description = sharedComic
+        .filter{ $0.id != nil }
         .flatMap { comic in
           api.getComicDetail(id: String(comic.id!))
         }
