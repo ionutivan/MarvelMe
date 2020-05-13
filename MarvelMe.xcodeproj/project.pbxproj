@@ -12,6 +12,8 @@
 		C63A9CCB2469AE7C00FE0182 /* ComicDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A9CCA2469AE7C00FE0182 /* ComicDetailViewModel.swift */; };
 		C63A9CCD2469AEA000FE0182 /* ComicDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A9CCC2469AEA000FE0182 /* ComicDetailViewController.swift */; };
 		C63A9CCF246AB03B00FE0182 /* ComicDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A9CCE246AB03B00FE0182 /* ComicDetail.swift */; };
+		C63A9CD1246C387400FE0182 /* ComicTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = C63A9CD0246C387400FE0182 /* ComicTest.swift */; };
+		C63A9CD4246C3D1600FE0182 /* sample.json in Resources */ = {isa = PBXBuildFile; fileRef = C63A9CD3246C3D1600FE0182 /* sample.json */; };
 		C6ABADB124640D8B00CA8AD0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ABADB024640D8B00CA8AD0 /* AppDelegate.swift */; };
 		C6ABADB324640D8B00CA8AD0 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ABADB224640D8B00CA8AD0 /* SceneDelegate.swift */; };
 		C6ABADBA24640D9000CA8AD0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C6ABADB924640D9000CA8AD0 /* Assets.xcassets */; };
@@ -26,6 +28,7 @@
 		C6ABADE62469617D00CA8AD0 /* ComicListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ABADE52469617D00CA8AD0 /* ComicListViewController.swift */; };
 		C6ABADE8246961BD00CA8AD0 /* ComicListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ABADE7246961BD00CA8AD0 /* ComicListCell.swift */; };
 		C6ABADEA246961FE00CA8AD0 /* ComicCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6ABADE9246961FE00CA8AD0 /* ComicCellViewModel.swift */; };
+		C6BE4353246C4226003A3666 /* FileManager+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6BE4352246C4226003A3666 /* FileManager+Extension.swift */; };
 		CD7AE896D0ED57973B1800E6 /* Pods_MarvelMe.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F127C58E9ABE273A6394DEA6 /* Pods_MarvelMe.framework */; };
 /* End PBXBuildFile section */
 
@@ -47,6 +50,8 @@
 		C63A9CCA2469AE7C00FE0182 /* ComicDetailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailViewModel.swift; sourceTree = "<group>"; };
 		C63A9CCC2469AEA000FE0182 /* ComicDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetailViewController.swift; sourceTree = "<group>"; };
 		C63A9CCE246AB03B00FE0182 /* ComicDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicDetail.swift; sourceTree = "<group>"; };
+		C63A9CD0246C387400FE0182 /* ComicTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicTest.swift; sourceTree = "<group>"; };
+		C63A9CD3246C3D1600FE0182 /* sample.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = sample.json; sourceTree = "<group>"; };
 		C6ABADAD24640D8B00CA8AD0 /* MarvelMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarvelMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C6ABADB024640D8B00CA8AD0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C6ABADB224640D8B00CA8AD0 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +70,7 @@
 		C6ABADE52469617D00CA8AD0 /* ComicListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListViewController.swift; sourceTree = "<group>"; };
 		C6ABADE7246961BD00CA8AD0 /* ComicListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicListCell.swift; sourceTree = "<group>"; };
 		C6ABADE9246961FE00CA8AD0 /* ComicCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComicCellViewModel.swift; sourceTree = "<group>"; };
+		C6BE4352246C4226003A3666 /* FileManager+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager+Extension.swift"; sourceTree = "<group>"; };
 		D0857244A0DCBF85F65FAC99 /* Pods_MarvelMeTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelMeTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F127C58E9ABE273A6394DEA6 /* Pods_MarvelMe.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MarvelMe.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6E22DAC504C4541CFC5F18F /* Pods-MarvelMe.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MarvelMe.release.xcconfig"; path = "Target Support Files/Pods-MarvelMe/Pods-MarvelMe.release.xcconfig"; sourceTree = "<group>"; };
@@ -161,7 +167,9 @@
 		C6ABADC624640D9000CA8AD0 /* MarvelMeTests */ = {
 			isa = PBXGroup;
 			children = (
-				C6ABADC724640D9000CA8AD0 /* ComicListViewModelTests.swift */,
+				C6BE4350246C41FE003A3666 /* Cases */,
+				C6BE4354246C4241003A3666 /* Samples */,
+				C6BE4351246C4210003A3666 /* Utils */,
 				C6ABADC924640D9000CA8AD0 /* Info.plist */,
 			);
 			path = MarvelMeTests;
@@ -194,6 +202,31 @@
 				C6ABADE9246961FE00CA8AD0 /* ComicCellViewModel.swift */,
 			);
 			path = ComicList;
+			sourceTree = "<group>";
+		};
+		C6BE4350246C41FE003A3666 /* Cases */ = {
+			isa = PBXGroup;
+			children = (
+				C63A9CD0246C387400FE0182 /* ComicTest.swift */,
+				C6ABADC724640D9000CA8AD0 /* ComicListViewModelTests.swift */,
+			);
+			path = Cases;
+			sourceTree = "<group>";
+		};
+		C6BE4351246C4210003A3666 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				C6BE4352246C4226003A3666 /* FileManager+Extension.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		C6BE4354246C4241003A3666 /* Samples */ = {
+			isa = PBXGroup;
+			children = (
+				C63A9CD3246C3D1600FE0182 /* sample.json */,
+			);
+			path = Samples;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -290,6 +323,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C63A9CD4246C3D1600FE0182 /* sample.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +438,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				C6ABADC824640D9000CA8AD0 /* ComicListViewModelTests.swift in Sources */,
+				C63A9CD1246C387400FE0182 /* ComicTest.swift in Sources */,
+				C6BE4353246C4226003A3666 /* FileManager+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
