@@ -1,11 +1,3 @@
-//
-//  ComicDetailCoordinator.swift
-//  MarvelMe
-//
-//  Created by Ionut Ivan on 11/05/2020.
-//  Copyright © 2020 Ionut Ivan. All rights reserved.
-//
-
 import UIKit
 
 final class ComicDetailCoordinator: Coordinator {

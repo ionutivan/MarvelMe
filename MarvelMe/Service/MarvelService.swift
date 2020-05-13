@@ -1,17 +1,8 @@
-//
-//  MarvelService.swift
-//  MarvelMe
-//
-//  Created by Ionut Ivan on 07/05/2020.
-//  Copyright © 2020 Ionut Ivan. All rights reserved.
-//
-
 import Foundation
 import RxSwift
 import RxCocoa
 import CryptoSwift
 
-//let baseURL = "developer.marvel.com"
 let baseURL = "http://gateway.marvel.com/v1/public"
 let publicKey = "0dac58e8603e1a946fc868e4af83d17a"
 let privateKey = "9b085aedb6bc43560a546a594ae23ac6fd377212"
@@ -44,6 +35,12 @@ protocol MarvelServiceProtocol {
 }
 
 final class MarvelService: MarvelServiceProtocol {
+  
+  let urlSession: URLSession
+  
+  init(urlSession: URLSession = .shared) {
+    self.urlSession = urlSession
+  }
   
   func getComicDetail(id: String) -> Observable<ComicDetail> {
     let comicDetailURL = baseURL + "/comics" + "/\(id)"

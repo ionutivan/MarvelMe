@@ -1,11 +1,3 @@
-//
-//  ComicDetailTest.swift
-//  MarvelMeTests
-//
-//  Created by Ionut Ivan on 13/05/2020.
-//  Copyright © 2020 Ionut Ivan. All rights reserved.
-//
-
 import XCTest
 @testable import MarvelMe
 
@@ -71,5 +63,4 @@ class ComicDetailTest: XCTestCase {
     }
 
   }
-
 }

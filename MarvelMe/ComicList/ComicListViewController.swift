@@ -1,11 +1,3 @@
-//
-//  ComicListViewController.swift
-//  MarvelMe
-//
-//  Created by Ionut Ivan on 11/05/2020.
-//  Copyright © 2020 Ionut Ivan. All rights reserved.
-//
-
 import Foundation
 
 import UIKit
@@ -59,50 +51,48 @@ class ComicListViewController: UIViewController {
     ])
   }
     
-    func bindViews() {
-        
-      viewModel.output.comics
-        .drive(self.tableView.rx.items(cellIdentifier: cellIdentifier, cellType: ComicListCell.self)) { (row, item, cell) in
-          let viewModel = ComicCellViewModel(item: item)
-          cell.viewModel = viewModel
-          }
-          .disposed(by: disposeBag)
-        
-      viewModel.output.errorMessage
-        .asObservable()
-        .subscribe(onNext:  { [weak self] errorMessage in
-                guard let strongSelf = self else { return }
-                strongSelf.showError(errorMessage)
-            })
-            .disposed(by: disposeBag)
-            
-        tableView.rx.modelSelected(Comic.self)
-            .subscribe(onNext: { [weak self] model in
-                
-              self?.viewModel.output.selectComic.accept(model)
-              if let selectedIndexPath = self?.tableView.indexPathForSelectedRow {
-                self?.tableView.deselectRow(at: selectedIndexPath, animated: true)
-              }
-            }
-        )
-            .disposed(by: disposeBag)
+  func bindViews() {
       
-      refreshControl.rx.controlEvent(.valueChanged)
-        .delay(.seconds(3), scheduler: MainScheduler.instance)
-        .subscribe(onNext: { [weak self] in
-          self?.refreshControl.endRefreshing()
-          self?.viewModel.input.reload.accept(true)
-        })
+    viewModel.output.comics
+      .drive(self.tableView.rx.items(cellIdentifier: cellIdentifier, cellType: ComicListCell.self)) { (row, item, cell) in
+        let viewModel = ComicCellViewModel(item: item)
+        cell.viewModel = viewModel
+        }
         .disposed(by: disposeBag)
       
-      
-  
-    }
+    viewModel.output.errorMessage
+      .asObservable()
+      .subscribe(onNext:  { [weak self] errorMessage in
+              guard let strongSelf = self else { return }
+              strongSelf.showError(errorMessage)
+          })
+          .disposed(by: disposeBag)
+          
+      tableView.rx.modelSelected(Comic.self)
+          .subscribe(onNext: { [weak self] model in
+              
+            self?.viewModel.output.selectComic.accept(model)
+            if let selectedIndexPath = self?.tableView.indexPathForSelectedRow {
+              self?.tableView.deselectRow(at: selectedIndexPath, animated: true)
+            }
+          }
+      )
+          .disposed(by: disposeBag)
     
-    func showError(_ errorMessage: String) {
-        let controller = UIAlertController(title: "An error occured", message: errorMessage, preferredStyle: .alert)
-        controller.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
-        self.present(controller, animated: true, completion: nil)
-    }
+    refreshControl.rx.controlEvent(.valueChanged)
+      .delay(.seconds(3), scheduler: MainScheduler.instance)
+      .subscribe(onNext: { [weak self] in
+        self?.refreshControl.endRefreshing()
+        self?.viewModel.input.reload.accept(true)
+      })
+      .disposed(by: disposeBag)
+    
+  }
+    
+  func showError(_ errorMessage: String) {
+    let controller = UIAlertController(title: "An error occured", message: errorMessage, preferredStyle: .alert)
+    controller.addAction(UIAlertAction(title: "Close", style: .cancel, handler: nil))
+    self.present(controller, animated: true, completion: nil)
+  }
     
 }

@@ -1,14 +1,6 @@
-//
-//  ComicDetail.swift
-//  MarvelMe
-//
-//  Created by Ionut Ivan on 12/05/2020.
-//  Copyright © 2020 Ionut Ivan. All rights reserved.
-//
-
 import Foundation
 
-struct ComicDetail: Decodable {
+struct ComicDetail: Decodable, Equatable {
   let description: String?
   
   enum CodingKeys: String, CodingKey {
