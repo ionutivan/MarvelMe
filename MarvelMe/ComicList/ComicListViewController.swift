@@ -27,8 +27,8 @@ class ComicListViewController: UIViewController {
     private let disposeBag = DisposeBag()
     let api = MarvelService()
     convenience init(viewModel: ComicListViewModel) {
-        self.init()
-        self.viewModel = viewModel
+      self.init()
+      self.viewModel = viewModel
     }
     
     override func viewDidLoad() {
@@ -58,7 +58,7 @@ class ComicListViewController: UIViewController {
         let viewModel = ComicCellViewModel(item: item)
         cell.viewModel = viewModel
         }
-        .disposed(by: disposeBag)
+      .disposed(by: disposeBag)
       
     viewModel.output.errorMessage
       .asObservable()
@@ -66,18 +66,18 @@ class ComicListViewController: UIViewController {
               guard let strongSelf = self else { return }
               strongSelf.showError(errorMessage)
           })
-          .disposed(by: disposeBag)
+      .disposed(by: disposeBag)
           
-      tableView.rx.modelSelected(Comic.self)
-          .subscribe(onNext: { [weak self] model in
-              
-            self?.viewModel.output.selectComic.accept(model)
-            if let selectedIndexPath = self?.tableView.indexPathForSelectedRow {
-              self?.tableView.deselectRow(at: selectedIndexPath, animated: true)
-            }
-          }
-      )
-          .disposed(by: disposeBag)
+    tableView.rx.modelSelected(Comic.self)
+      .subscribe(onNext: { [weak self] model in
+            
+        self?.viewModel.output.selectComic.accept(model)
+        if let selectedIndexPath = self?.tableView.indexPathForSelectedRow {
+          self?.tableView.deselectRow(at: selectedIndexPath, animated: true)
+        }
+      }
+    )
+      .disposed(by: disposeBag)
     
     refreshControl.rx.controlEvent(.valueChanged)
       .delay(.seconds(3), scheduler: MainScheduler.instance)

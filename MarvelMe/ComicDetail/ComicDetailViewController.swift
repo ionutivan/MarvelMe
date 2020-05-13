@@ -44,10 +44,10 @@ final class ComicDetailViewController: UIViewController {
   }()
   
   convenience init(viewModel: ComicDetailViewModel, comic: Comic) {
-      self.init()
-      self.comic = comic
-    
-      self.viewModel = viewModel
+    self.init()
+    self.comic = comic
+  
+    self.viewModel = viewModel
   }
   
   override func viewDidLoad() {
@@ -83,7 +83,7 @@ final class ComicDetailViewController: UIViewController {
       .disposed(by: disposeBag)
     
     viewModel.output.imageStringURL
-    .asObservable()
+      .asObservable()
       .observeOn(MainScheduler.instance)
       .subscribe(onNext: { imageURLString in
         if let urlString = imageURLString,
@@ -93,7 +93,7 @@ final class ComicDetailViewController: UIViewController {
           self.thumbImage.image = nil
         }
       })
-    .disposed(by: disposeBag)
+      .disposed(by: disposeBag)
     
     viewModel.output.description
       .drive(descriptionLabel.rx.text)

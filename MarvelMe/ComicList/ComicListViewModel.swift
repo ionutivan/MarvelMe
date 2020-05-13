@@ -27,12 +27,13 @@ final class ComicListViewModel {
    let selectComic = PublishRelay<Comic?>()
    let comics = reloadRelay
     .flatMapLatest({ _ in api.getComics(offset: 0, limit: 20) })
-     .asDriver{ (error) -> Driver<[Comic]> in
+    .asDriver{ (error) -> Driver<[Comic]> in
       
       print(error.localizedDescription)
        errorRelay.accept((error as? ServiceError)?.localizedDescription ?? error.localizedDescription)
        return Driver.just([])
-   }
+    }
+    
    self.input = Input(reload: reloadRelay)
    self.output = Output(comics: comics,
                         errorMessage: errorRelay.asDriver(onErrorJustReturn: "An error happened"),

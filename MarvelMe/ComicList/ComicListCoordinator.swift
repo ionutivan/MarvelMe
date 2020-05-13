@@ -23,7 +23,7 @@ extension ComicListCoordinator: CoordinatorInterface {
         let coordinator = ComicDetailCoordinator(navigationController: self?.navigationController, comic: comic!)
         coordinator.start()
         self?.childCoordinators.append(coordinator)
-    })
+      })
       .disposed(by: disposeBag)
       
   }

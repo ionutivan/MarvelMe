@@ -10,7 +10,7 @@ struct ComicDetailViewModel {
     let output: Output
     
     struct Input {
-        let comic: PublishRelay<Comic>
+      let comic: PublishRelay<Comic>
     }
     
     struct Output {
@@ -41,7 +41,7 @@ struct ComicDetailViewModel {
           api.getComicDetail(id: String(comic.id!))
         }
       .map{ $0.description }
-      .asDriver(onErrorJustReturn: "Some marvelous description")
+      .asDriver(onErrorJustReturn: "")
       
       self.input = Input(comic: selectComic)
       self.output = Output(name: name, imageStringURL: imageStringURL, description: description)
